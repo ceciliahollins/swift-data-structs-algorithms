@@ -4,25 +4,25 @@ public class Tests: XCTestCase {
     
     func testShortLinkedList() {
         let nodes = linkedListNodes(from: [1, 2])
-        let result = reverseLinkedList(startingFrom: nodes[0])
+        let result = Solution().reverseLinkedList(startingFrom: nodes[0])
         XCTAssertTrue(isListReversed(list: result, originalNodes: nodes))
     }
     
     func testLongLinkedList() {
         let nodes = linkedListNodes(from: [1, 2, 3, 4, 5, 6])
-        let result = reverseLinkedList(startingFrom: nodes[0])
+        let result = Solution().reverseLinkedList(startingFrom: nodes[0])
         XCTAssertTrue(isListReversed(list: result, originalNodes: nodes))
     }
 
     func testOneElementLinkedList() {
         let node = LinkedListNode(1)
-        let result = reverseLinkedList(startingFrom: node)
+        let result = Solution().reverseLinkedList(startingFrom: node)
         XCTAssertTrue(node === result)
     }
 
     func testEmptyLinkedList() {
         let nilList: LinkedListNode<Int>? = nil
-        let result = reverseLinkedList(startingFrom: nilList)
+        let result = Solution().reverseLinkedList(startingFrom: nilList)
         XCTAssertNil(result)
     }
     
