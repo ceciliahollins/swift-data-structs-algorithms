@@ -1,4 +1,21 @@
-public class BinaryTreeNode {
+
+struct Solution {
+    func isBalanced(treeRoot: BinaryTreeNode) -> Bool {
+        
+        guard treeRoot.left != nil && treeRoot.right != nil else {
+            return true
+        }
+        
+        let rootDeepestLevel = treeRoot.deepestLevel() - 1
+        if rootDeepestLevel - 1 <= 1 {
+            return true
+        }
+        
+        return false
+    }
+}
+
+class BinaryTreeNode {
 
     var value: Int
     var left: BinaryTreeNode?
@@ -31,18 +48,4 @@ public class BinaryTreeNode {
         
         return max(leftLevel, rightLevel) + 1
     }
-}
-
-public func isBalanced(treeRoot: BinaryTreeNode) -> Bool {
-    
-    guard treeRoot.left != nil && treeRoot.right != nil else {
-        return true
-    }
-    
-    let rootDeepestLevel = treeRoot.deepestLevel() - 1
-    if rootDeepestLevel - 1 <= 1 {
-        return true
-    }
-    
-    return false
 }
