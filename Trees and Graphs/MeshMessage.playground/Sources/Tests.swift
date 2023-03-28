@@ -14,7 +14,7 @@ public class Tests: XCTestCase {
 
     func testTwoHopPath1() {
         do {
-            let actual = try getPath(graph: graph, startNode: "a", endNode: "e")
+            let actual = try Solution().getPath(graph: graph, startNode: "a", endNode: "e")
             let expected = ["a", "c", "e"]
             assertEqual(actual, expected)
         } catch {
@@ -24,7 +24,7 @@ public class Tests: XCTestCase {
 
     func testTwoHopPath2() {
         do {
-            let actual = try getPath(graph: graph, startNode: "d", endNode: "c")
+            let actual = try Solution().getPath(graph: graph, startNode: "d", endNode: "c")
             let expected = ["d", "a", "c"]
             assertEqual(actual, expected)
         } catch {
@@ -34,7 +34,7 @@ public class Tests: XCTestCase {
 
     func testOneHopPath1() {
         do {
-            let actual = try getPath(graph: graph, startNode: "a", endNode: "c")
+            let actual = try Solution().getPath(graph: graph, startNode: "a", endNode: "c")
             let expected = ["a", "c"]
             assertEqual(actual, expected)
         } catch {
@@ -44,7 +44,7 @@ public class Tests: XCTestCase {
 
     func testOneHopPath2() {
         do {
-            let actual = try getPath(graph: graph, startNode: "f", endNode: "g")
+            let actual = try Solution().getPath(graph: graph, startNode: "f", endNode: "g")
             let expected = ["f", "g"]
             assertEqual(actual, expected)
         } catch {
@@ -54,7 +54,7 @@ public class Tests: XCTestCase {
 
     func testOneHopPath3() {
         do {
-            let actual = try getPath(graph: graph, startNode: "g", endNode: "f")
+            let actual = try Solution().getPath(graph: graph, startNode: "g", endNode: "f")
             let expected = ["g", "f"]
             assertEqual(actual, expected)
         } catch {
@@ -64,7 +64,7 @@ public class Tests: XCTestCase {
 
     func testZeroHopPath() {
         do {
-            let actual = try getPath(graph: graph, startNode: "a", endNode: "a")
+            let actual = try Solution().getPath(graph: graph, startNode: "a", endNode: "a")
             let expected = ["a"]
             assertEqual(actual, expected)
         } catch {
@@ -74,7 +74,7 @@ public class Tests: XCTestCase {
 
     func testNoPath() {
         do {
-            let actual = try getPath(graph: graph, startNode: "a", endNode: "f")
+            let actual = try Solution().getPath(graph: graph, startNode: "a", endNode: "f")
             XCTAssertNil(actual)
         } catch {
             XCTFail("\(error)")
@@ -82,11 +82,11 @@ public class Tests: XCTestCase {
     }
 
     func testStartNodeNotPresent() {
-        XCTAssertThrowsError(try getPath(graph: graph, startNode: "h", endNode: "a"))
+        XCTAssertThrowsError(try Solution().getPath(graph: graph, startNode: "h", endNode: "a"))
     }
 
     func testEndNodeNotPresent() {
-        XCTAssertThrowsError(try getPath(graph: graph, startNode: "a", endNode: "h"))
+        XCTAssertThrowsError(try Solution().getPath(graph: graph, startNode: "a", endNode: "h"))
     }
 }
 
