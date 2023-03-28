@@ -1,4 +1,4 @@
-public class ChangePossibilities {
+struct Solution {
     
     // create a new tree with 0 as the root
     let possibilityTree = CoinTree(head: 0)
@@ -21,7 +21,7 @@ public class ChangePossibilities {
 }
 
 // An implementation of a tree to add coin values into
-class CoinTree {
+struct CoinTree {
     var head: Int
     var nodes: [CoinTree] = []
         
