@@ -41,4 +41,9 @@ public class Tests: XCTestCase {
         XCTAssertEqual(actual, expected)
     }
     
+    func testNoPossibleCoinCombinations() {
+        let actual = change.changePossibilities(amount: 7, denominations: [2, 4, 6])
+        let expected = 0
+        XCTAssertEqual(actual, expected)
+    }
 }
