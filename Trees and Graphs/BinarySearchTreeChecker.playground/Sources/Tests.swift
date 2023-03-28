@@ -11,7 +11,7 @@ public class Tests: XCTestCase {
             right.insert(leftValue: 60)
             right.insert(rightValue: 80)
 
-            let result = isBinarySearchTree(root)
+        let result = Solution().isBinarySearchTree(root)
             XCTAssertTrue(result)
         }
 
@@ -24,7 +24,7 @@ public class Tests: XCTestCase {
             right.insert(leftValue: 70)
             right.insert(rightValue: 90)
 
-            let result = isBinarySearchTree(root)
+            let result = Solution().isBinarySearchTree(root)
             XCTAssertFalse(result)
         }
 
@@ -35,7 +35,7 @@ public class Tests: XCTestCase {
             let leftLeftLeft = leftLeft.insert(leftValue: 20)
             leftLeftLeft.insert(leftValue: 10)
 
-            let result = isBinarySearchTree(root)
+            let result = Solution().isBinarySearchTree(root)
             XCTAssertTrue(result)
         }
 
@@ -45,14 +45,14 @@ public class Tests: XCTestCase {
             let rightRight = right.insert(leftValue: 60)
             rightRight.insert(leftValue: 80)
 
-            let result = isBinarySearchTree(root)
+            let result = Solution().isBinarySearchTree(root)
             XCTAssertFalse(result)
         }
 
         func testOneNodeTree() {
             let root = BinaryTreeNode(50)
 
-            let result = isBinarySearchTree(root)
+            let result = Solution().isBinarySearchTree(root)
             XCTAssertTrue(result)
         }
 }
