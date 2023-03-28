@@ -1,4 +1,4 @@
-class TempTracker {
+class Solution {
 
     // implement methods to track the max, min, mean, and mode
     var temperatures: [Int: Int] = [:]

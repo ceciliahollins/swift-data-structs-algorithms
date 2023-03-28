@@ -13,9 +13,9 @@ public class Tests: XCTestCase {
     
     func testTemperatureTracker() {
         let precision = 1e-6
-        
-        let tracker = TempTracker()
         var msg: String
+        
+        let tracker = Solution()
         
         tracker.insert(temperature: 50)
         msg = "failed on first temp recorded"
