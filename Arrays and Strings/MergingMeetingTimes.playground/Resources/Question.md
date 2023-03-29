@@ -1,5 +1,5 @@
 # Merging Meeting Times
-Source: [Interview Cake](https://www.interviewcake.com/question/swift/cake-thief?course=fc1&section=dynamic-programming-recursion)
+Source: [Interview Cake](https://www.interviewcake.com/question/swift/merging-ranges?course=fc1&section=array-and-string-manipulation)
 
 ## Your company built an in-house calendar tool called HiCal. You want to add a feature to see the times in a day when *everyone* is available.
 
