@@ -1,5 +1,5 @@
 # Product of All Other Numbers
-Source: [Interview Cake](https://www.interviewcake.com/question/swift/cake-thief?course=fc1&section=dynamic-programming-recursion)
+Source: [Interview Cake](https://www.interviewcake.com/question/swift/product-of-other-numbers?course=fc1&section=greedy)
 
 ## You have an array of integers, and for each index you want to find the product of *every integer except the integer at that index.*
 
