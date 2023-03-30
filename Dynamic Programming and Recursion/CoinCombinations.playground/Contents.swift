@@ -1,0 +1,2 @@
+
+Tests.defaultTestSuite.run()
