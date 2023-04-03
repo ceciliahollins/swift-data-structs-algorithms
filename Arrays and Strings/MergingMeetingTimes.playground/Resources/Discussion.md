@@ -10,6 +10,7 @@ Sorting the meetings will be O(n log n), as well as iteration O(n). It is not po
 The O(n) space comes from a new variable to hold the sorted meetings, and creating an array of merged meetings to hold the output. Worse case is there are no meetings that will be merged, and the output array is the same size as the input. In this case, it is better to create a new veraible to hold the output so not to destruct the original input.
 
 
+
 ## Check every meeting with every other meeting for overlap
 ### time complexity: O(n^2)
 ### space complexity: O(n)
