@@ -111,5 +111,12 @@ public class Tests: XCTestCase {
         ]
         XCTAssertEqual(actual, expected)
     }
+    
+    func testNoMeetings() {
+        let meetings: [Meeting] = []
+        let actual = Solution().mergeRanges(in: meetings)
+        let expected: [Meeting] = []
+        XCTAssertEqual(actual, expected)
+    }
 }
 
