@@ -4,16 +4,17 @@ struct Solution {
     
     func reverse(_ str: inout [Character]) {
 
-        for i in 0 ..< str.count/2 {
-            let lastIndex = str.count - (i + 1)
+        // iterate input, stopping halfway through
+        for currIndex in 0 ..< str.count/2 {
             
-            let tempElement = str[i]
-            str[i] = str[lastIndex]
-            str[lastIndex] = tempElement
+            // get the mirrored index
+            let oppositeIndex = str.count - (currIndex + 1)
+            
+            // swap the mirrored values
+            let tempElement = str[currIndex]
+            str[currIndex] = str[oppositeIndex]
+            str[oppositeIndex] = tempElement
         }
-        
-        // time complexity: O(n)
-        // space complexity O(1)
     }
 }
 
