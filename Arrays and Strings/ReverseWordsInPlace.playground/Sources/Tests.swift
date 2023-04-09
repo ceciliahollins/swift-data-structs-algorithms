@@ -15,21 +15,21 @@ public class Tests: XCTestCase {
         Solution().reverseWords(&actual)
         XCTAssertEqual(actual, expected)
     }
-    
+
     func testThreeWords() {
         let expected = Array("get another one")
         var actual = Array("one another get")
         Solution().reverseWords(&actual)
         XCTAssertEqual(actual, expected)
     }
-    
+
     func testMultipleWordsSameLength() {
         let expected = Array("the cat ate the rat")
         var actual = Array("rat the ate cat the")
         Solution().reverseWords(&actual)
         XCTAssertEqual(actual, expected)
     }
-    
+
     func testMultipleWordsDifferentLengths() {
         let expected = Array("chocolate bundt cake is yummy")
         var actual = Array("yummy is cake bundt chocolate")
