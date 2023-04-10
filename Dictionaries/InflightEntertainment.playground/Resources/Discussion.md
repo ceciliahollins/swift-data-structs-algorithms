@@ -4,7 +4,36 @@
 
 By using a set, functions such as contains and insert only takes O(1) time. It is safe to use a set over an array, as the order of the movies does not matter and the movie lengths will be unique, as it does matter which movie holds what length as long as there is a possible movie with a specific length to watch. 
 
-The algorithm starts by creating a set possibleMovieCombos, which will hold available movies that could be paired with another movie. The movieLengths are then iterated. A possible second movie is calculate by subtracting the current movie from the flight length. If this movie length is in the available movies set, it is known we have a possible combination of movies and true can be returned. Otherwise, the movie is added into the movies set to be considered for a later combination. If the entire array is iterated and no combinations are found, then there are no combinations.
+The algorithm starts by creating a set possibleMovieCombos, which will hold available movies that could be paired with another movie. The movieLengths are then iterated. A possible second movie is calculate by subtracting the current movie from the flight length. If this movie length is in the available movies set, it is known we have a possible combination of movies and true can be returned. Otherwise, the movie is added into the movies set to be considered for a later combination. If the entire array is iterated and no combinations are found, then there are no combinations. For example:
+```swift
+movieLengths = [2, 3, 4]
+fillFlight = 6
+possibleMovieCombos = []
+
+ITERATION ONE:
+movie = 2
+possibleSecondMovie = 4
+
+if possibleMovieCombos.contains(possibleSecondMovie) // false
+possibleMovieCombos = [2]
+```
+
+See the rest of the iterations below:
+```swift
+ITERATION TWO:
+movie = 3
+possibleSecondMovie = 3
+
+if possibleMovieCombos.contains(possibleSecondMovie) // false
+possibleMovieCombos = [2, 3]
+
+ITERATION THREE:
+movie = 4
+possibleSecondMovie = 2
+
+if possibleMovieCombos.contains(possibleSecondMovie) // true
+return true
+```
 
 Time complexity O(n) comes from the iteration of movieLengths. This iteration cannot be avoided, as we should check every movie for a combination. Time was saved by using a set instead of an array, as the contains and insert methods are only O(1) as compared to O(n) for an array. While this does add O(n) space, time should be prioritized for this solution.
 
