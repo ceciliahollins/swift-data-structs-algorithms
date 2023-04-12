@@ -7,6 +7,7 @@ class Solution {
 
     init(_ input: String) {
         self.input = input
+        populateWordsToCounts()
     }
 
     private func populateWordsToCounts() {
