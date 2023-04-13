@@ -33,7 +33,7 @@ struct Solution {
                 message[oppositeIndex] = tempElement
             }
                         
-            // update to start on the next word
+            // update to start of the next word
             wordStart = wordEnd == message.endIndex ? wordEnd : message.index(after: wordEnd)
             wordEnd = wordStart
             
