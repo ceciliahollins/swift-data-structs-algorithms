@@ -13,7 +13,7 @@ class Solution {
     private func populateWordsToCounts() {
         
         // check that the input is not empty and contains words
-        guard !input.isEmpty && input.contains(where: { $0.isLetter() }) else { return }
+        guard !input.isEmpty && input.contains(where: { $0.isLetter }) else { return }
         
         // get the start and end of the first word
         var wordStart = getWordStart(currWordEnd: input.startIndex)
@@ -32,8 +32,7 @@ class Solution {
             }
             
             // find the start and end of the next word, accounting for puncuation
-            let nextWordStart = wordEnd == input.endIndex ? wordEnd : input.index(after: wordEnd)
-            wordStart = getWordStart(currWordEnd: nextWordStart)
+            wordStart = getWordStart(currWordEnd: wordEnd)
             wordEnd = getWordEnd(currWordStart: wordStart)
         }
     }
@@ -43,7 +42,7 @@ class Solution {
         var wordStart = currWordEnd
         
         // search through the input until the character is a letter or it is the end of the sentence
-        while wordStart != input.endIndex && !input[wordStart].isLetter() {
+        while wordStart != input.endIndex && !input[wordStart].isLetter {
             wordStart = input.index(after: wordStart)
         }
         
@@ -63,12 +62,7 @@ class Solution {
     }
 }
 
-extension Character {
-    // A helper function to determine if a character is a letter
-    func isLetter() -> Bool {
-        return "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ".contains(self)
-    }
-    
+extension Character {    
     // A helper function to determine if a character is one that signifies the end of a word
     func isSplittingWord() -> Bool {
         return " ,;:.!?:()&\"`".contains(self)
