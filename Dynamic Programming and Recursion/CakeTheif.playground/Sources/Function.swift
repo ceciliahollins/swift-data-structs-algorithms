@@ -5,14 +5,15 @@ struct CakeType {
     let value: Int
 }
 
-struct Solution {
+class Solution {
     
     // memo = [weight: best value]
-    func maxDuffelBagValue(for cakeTypes: [CakeType], withCapacity weightCapacity: Int, memo: [Int: Int] = [:]) -> Int {
+    var memo: [Int: Int] = [:]
+    
+    func maxDuffelBagValue(for cakeTypes: [CakeType], withCapacity weightCapacity: Int) -> Int {
             
         // check if weight capacity is already in memo
         if let memo = memo[weightCapacity] {
-            print("Hit", memo)
             return memo
         }
         
@@ -35,7 +36,6 @@ struct Solution {
             }
         }
         
-        print(weightCapacity, largestResult)
         memo[weightCapacity] = largestResult
         return largestResult
     }
