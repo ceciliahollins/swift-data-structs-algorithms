@@ -5,39 +5,48 @@ struct CakeType {
     let value: Int
 }
 
-struct Solution {
+class Solution {
     
-    // memo = [weight: best value]
-    func maxDuffelBagValue(for cakeTypes: [CakeType], withCapacity weightCapacity: Int, memo: [Int: Int] = [:]) -> Int {
-            
-        // check if weight capacity is already in memo
-        if let memo = memo[weightCapacity] {
-            print("Hit", memo)
-            return memo
-        }
+    func maxDuffelBagValue(for cakeTypes: [CakeType], withCapacity weightCapacity: Int) -> Int {
+        // storage = [weight: best value]
+        var storage: [Int: Int] = [:]
         
-        // Base case
-        if weightCapacity <= 0 {
-            return 0
-        }
+        // memo = ((cakeTypes, weightCapacity) -> bestValue)
+        var memo: (([CakeType], Int) -> Int)!
         
-        var largestResult = 0
+        memo = { cakeTypes, weightCapacity in
             
-        // Check possibilities for each cake
-        for cake in cakeTypes {
-            guard cake.weight != 0 else { continue }
-            
-            let newCapacity = weightCapacity - cake.weight
-            let newValue = maxDuffelBagValue(for: cakeTypes, withCapacity: newCapacity)
-            
-            if newCapacity >= 0 {
-                largestResult = max(cake.value + newValue, largestResult)
+            // check if this weight capacity has already been calculated in the storage
+            if let cached = storage[weightCapacity] {
+                return cached
             }
+                
+            // check possible combinations for each cake type
+            var largestMonetaryValue = 0
+            for cake in cakeTypes {
+                
+                guard cake.weight != 0 else { continue }
+                
+                // calculate the new capacity available if the current cake is added to the bag
+                let newCapacity = weightCapacity - cake.weight
+                
+                // as long as the new capacity available is above 0, the cake can be added to the bag
+                if newCapacity >= 0 {
+                    
+                    // recursively call the function to calculate the best value if the current cake is added into the bag
+                    let newValue = memo(cakeTypes, newCapacity)
+                    
+                    // take the largest value from testing possibilities for the current weigh capacity
+                    largestMonetaryValue = max(cake.value + newValue, largestMonetaryValue)
+                }
+            }
+            
+            // add the largest monetary value for that weight to the storage for later recursion calls
+            storage[weightCapacity] = largestMonetaryValue
+            return largestMonetaryValue
         }
         
-        print(weightCapacity, largestResult)
-        memo[weightCapacity] = largestResult
-        return largestResult
+        return memo(cakeTypes, weightCapacity)
     }
 }
 
