@@ -8,12 +8,6 @@ struct CakeType {
 class Solution {
     
     func maxDuffelBagValue(for cakeTypes: [CakeType], withCapacity weightCapacity: Int) -> Int {
-        return memoizeCake(cakeTypes, weightCapacity)
-    }
-    
-    // memo = [weight: best value]
-    // func memoizeCake(_ function: ((([CakeType], Int) -> Int), [CakeType], Int)) -> ([CakeType], Int) -> Int {
-    func memoizeCake(_ cakeTypes: [CakeType], _ weightCapacity: Int) -> Int {
         // storage = [weight: best value]
         var storage: [Int: Int] = [:]
         
