@@ -91,10 +91,10 @@ and would return the combinations:
 [3, 1]
 ```
 The figure below illustrates how the coins would be added in the recursive solution.
-[Figure 0](/figure-0.png)
+![Figure 0](figure-0.png)
 
 Without additional logic to avoid repeated combinations, an incorrect answer will be returned. The repeated combinations can be seen by the highlighted markup.
-[Figure 1](/figure-1.png)
+![Figure 1](figure-1.png)
 
 In order to avoid this, the first solution that comes to mind would be to add additional space to store the current combinations, and compare the current combination to the already found combinations. This would require O(n^k) extra space to store combinations, and at least O(klogk + k(n^k)) to sort the current combination array where worst case is the array is the size of the amount (klogk), and compare it (k) with every other array in the storage (n^k). This is highly inefficient.
 
@@ -115,7 +115,7 @@ for (i, denomination) in denominations.enumerated() {
 }
 ```
 The new recursive solution can be illustrated as following:
-[Figure 2](/figure-2.png)
+![Figure 2](figure-2.png)
 
 For more understanding, a code walkthrough can be provided. With the solution, the call stack starts with amount 4 and denominations 1, 2, and 3. the denominations are iterated, and the current denomination is subtracted from the current amount. if that amount is greater than zero, a recursive call is make with the new amount and updated denominations, taking only the denominations that are the same amount or less to avoid repeat combinations. The total returned will be added to the total combinations amount. If the new amount is zero, one is added to the total combinations, as it will be one full combination. If the amount is less than zero, nothing should be done as this is not a valid combination. In depth iterations are shown below:
 
