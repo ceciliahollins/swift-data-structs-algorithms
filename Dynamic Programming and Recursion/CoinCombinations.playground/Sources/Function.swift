@@ -1,76 +1,54 @@
+
 struct Solution {
-    
-    // create a new tree with 0 as the root
-    let possibilityTree = CoinTree(head: 0)
         
     func changePossibilities(amount: Int, denominations: [Int]) -> Int {
+        
+        // storage = [amount: (numOfCombinations, withDenominations)]
+        var storage: [Int: (Int, [Int])] = [:]
+        
+        // memo = ((amount, denominations) -> totalNumOfCombinations)
+        var memo: ((Int, [Int]) -> Int)!
+        
+        // if the amount is 0, return 1 way to make zero
         guard amount > 0 else { return 1 }
         
-        // start with the largest coins first
-        let sortedDenominations = denominations.sorted(by: { $1 < $0 })
-        
-        // start the tree by adding each denomination onto the tree
-        for (i, denomination) in sortedDenominations.enumerated() {
-            // create a new tree with curr denomination as the head
-            let coin = CoinTree(head: denomination)
-            possibilityTree.addNode(node: coin, denominations: Array(sortedDenominations[i...]), totalAmount: amount, branchAmount: possibilityTree.head)
-        }
-
-        return possibilityTree.getCount()
-    }
-}
-
-// An implementation of a tree to add coin values into
-struct CoinTree {
-    var head: Int
-    var nodes: [CoinTree] = []
-        
-    init(head: Int) {
-        self.head = head
-    }
-    
-    func addNode(node: CoinTree, denominations: [Int], totalAmount: Int, branchAmount: Int) {
-        
-        // if the current branch amount plus the new node amount will be less than or equal to the total amount, the node can be added
-        if branchAmount + node.head <= totalAmount {
-            self.nodes.append(node)
+        memo = { amount, denominations in
+            // if the amount has already been calculated with the specified denomination, return the number of combinations
+            // O(k)
+            if let cached = storage[amount],
+               cached.1 == denominations {
+                return cached.0
+            }
             
-            // test the other denominations to see if they can also be added onto the tree
-            for denomination in denominations {
+            // create a new variable to track the total possible combinations
+            var totalCombinations = 0
+            
+            // iterate the denominations
+            // O(k)
+            for (i, denomination) in denominations.enumerated() {
+                // calculate what the amount would be if the coin was added to the amount
+                let currAmount = amount - denomination
                 
-                // create the potential new node
-                let nodeToAdd = CoinTree(head: denomination)
-                
-                // denominations will be the same or smaller amount as the current denomination as the tree goes down
-                let filteredDenominations = denominations.filter({ $0 <= denomination})
-                
-                // update the current branch amount
-                let branchAmount = branchAmount + node.head
-                
-                // recursively add the new node to the tree
-                node.addNode(node: nodeToAdd,
-                             denominations: filteredDenominations,
-                             totalAmount: totalAmount,
-                             branchAmount: branchAmount)
+                // if there is still amount left, recursively call memo with the new amount
+                if currAmount > 0 {
+                    // add the amount returned from the recursive call to the total number of combinations
+                    // send the current amount, and only the coin denomations equal and lower than current coin to avoid repeat combinations
+                    // O(n)
+                    let updatedDenominations = Array(denominations[...i])
+                    totalCombinations += memo(currAmount, updatedDenominations)
+                    
+                // if the current amount is zero, add one to the total combination count
+                } else if currAmount == 0 {
+                    totalCombinations += 1
+                }
             }
+            
+            // add the total combinations and current denominations to the storage and return the total combinations
+            storage[amount] = (totalCombinations, denominations)
+            return totalCombinations
         }
-    }
-    
-    func getCount() -> Int {
-        var count: Int = 0
-        
-        for child in self.nodes {
-            if child.isEndOfBranch() {
-                count += 1
-            } else {
-                count += child.getCount()
-            }
-        }
-        return count
-    }
-    
-    func isEndOfBranch() -> Bool {
-        return self.nodes.isEmpty
+
+        return memo(amount, denominations)
     }
 }
 
