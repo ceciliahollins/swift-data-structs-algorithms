@@ -39,5 +39,11 @@ public class Tests: XCTestCase {
         let expected: Int = 55
         XCTAssertEqual(actual, expected)
     }
+    
+    func testVeryLargeFibonacci() {
+        let actual = solution.fib(50)
+        let expected: Int = 12586269025
+        XCTAssertEqual(actual, expected)
+    }
 }
 
