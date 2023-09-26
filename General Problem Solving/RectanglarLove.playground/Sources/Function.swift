@@ -3,46 +3,29 @@ struct Solution {
     
     func findRectangularOverlap(rect1: Rectangle, rect2: Rectangle) -> Rectangle? {
         
-        guard rect1 != rect2 else { return rect1 }
+        // find which rect is closer to the x-axis and determine leftX
+        let leftX = rect1.leftX <= rect2.leftX
+        ? rect2.leftX
+        : rect1.leftX
         
-        if (rect1.leftX <= rect2.leftX && rect1.leftX + rect1.width > rect2.leftX) { // left intersection
-            if (rect1.bottomY <= rect2.bottomY && rect1.bottomY + rect1.height > rect2.bottomY) { // bottom intersection
-                print("left bottom intersection")
-                let leftX = rect2.leftX
-                let bottomY = rect2.bottomY
-                let width = (rect1.leftX + rect1.width) - rect2.leftX
-                let height = (rect1.bottomY + rect1.height) - rect2.bottomY
-                
-                return Rectangle(leftX: leftX, bottomY: bottomY, width: width, height: height)
-                
-            } else if (rect2.bottomY <= rect1.bottomY && rect2.bottomY + rect2.height > rect1.bottomY) { // top intersection
-                let leftX = rect2.leftX
-                let bottomY = rect1.bottomY
-                let width = (rect1.leftX + rect1.width) - rect2.leftX
-                let height = (rect2.bottomY + rect2.height) - rect1.bottomY
-                
-                return Rectangle(leftX: leftX, bottomY: bottomY, width: width, height: height)
-            }
-        } else if (rect2.leftX <= rect1.leftX && rect2.leftX + rect2.width > rect1.leftX) { // right intersection
-            if (rect1.bottomY <= rect2.bottomY && rect1.bottomY + rect1.height > rect2.bottomY) { // bottom intersection
-                let leftX = rect1.leftX
-                let bottomY = rect1.bottomY
-                let width = (rect2.leftX + rect2.width) - rect1.leftX
-                let height = (rect1.bottomY + rect1.height) - rect2.bottomY
-                
-                return Rectangle(leftX: leftX, bottomY: bottomY, width: width, height: height)
-                
-            } else if (rect2.bottomY <= rect1.bottomY && rect2.bottomY + rect2.height > rect1.bottomY) { // top intersection
-                let leftX = rect1.leftX
-                let bottomY = rect2.bottomY
-                let width = (rect1.leftX + rect1.width) - rect2.leftX
-                let height = (rect2.bottomY + rect2.height) - rect1.bottomY
-                
-                return Rectangle(leftX: leftX, bottomY: bottomY, width: width, height: height)
-            }
-        }
-                                            
-        return nil
+        // find which rect is closer to the x-axis and calculate width
+        let width = rect1.leftX <= rect2.leftX
+        ? min((rect1.leftX + rect1.width) - rect2.leftX, rect2.width)
+        : min((rect2.leftX + rect2.width) - rect1.leftX, rect1.width)
+        
+        // find which rect is closer to the y-axis and determine bottomY
+        let bottomY = rect1.bottomY <= rect2.bottomY
+        ? rect2.bottomY
+        : rect1.bottomY
+        
+        // find which rect is closer to the y-axis and calculate height
+        let height = rect1.bottomY <= rect2.bottomY
+        ? min((rect1.bottomY + rect1.height) - rect2.bottomY, rect2.height)
+        : min((rect2.bottomY + rect2.height) - rect1.bottomY, rect1.height)
+        
+        // if the width and height are both greater than zero, there is an overlapping rectangle
+        // otherwise return nil, there is no overlap
+        return width > 0 && height > 0 ? Rectangle(leftX: leftX, bottomY: bottomY, width: width, height: height) : nil
     }
 }
 
