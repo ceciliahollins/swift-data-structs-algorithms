@@ -5,7 +5,7 @@ Source: [Interview Cake](https://www.interviewcake.com/question/swift/rectangula
 
 **They need help writing an algorithm to find the intersection of two users' love rectangles.** They suspect finding that intersection is the key to a matching algorithm so powerful it will cause an immediate acquisition by Google or Facebook or Obama or something.
 
-TODO: add figure-0 link
+![Figure 0](figure-0.png)
 
 **Write a function to find the rectangular intersection of two given love rectangles.**
 
