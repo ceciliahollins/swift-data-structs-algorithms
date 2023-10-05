@@ -2,18 +2,24 @@ import Foundation
 
 struct Solution {
     
-    func findRepeat(in array: [Int]) -> Int? {
+    func findRepeat(in array: [Int]) -> Int {
 
+        // pull value of n into a variable
         let n = array.count - 1
         
-        let expectedTriangleValue = ((n*n) + n) / 2
-        var actualTrianlgeValue = 0
+        // calculate the expected total value given constraints
+        // this is a formula for adding all numbers together between 0..n
+        let expectedTotalValue = ((n*n) + n) / 2
+        
+        // iterate the array to calculate the actual expected value
+        var actualTotalValue = 0
         for item in array {
-            actualTrianlgeValue += item
+            actualTotalValue += item
         }
 
 
-        return actualTrianlgeValue - expectedTriangleValue
+        // subtract the expected total value from the actual, this will be the duplicate number
+        return actualTotalValue - expectedTotalValue
     }
 }
 
