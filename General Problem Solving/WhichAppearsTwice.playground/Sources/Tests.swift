@@ -2,6 +2,12 @@ import XCTest
 
 public class Tests: XCTestCase {
     
+    func testOneRepeat() {
+        let actual = Solution().findRepeat(in: [1, 1])
+        let expected = 1
+        XCTAssertEqual(actual, expected)
+    }
+    
     func testShortArray() {
         let actual = Solution().findRepeat(in: [1, 2, 1])
         let expected = 1
