@@ -1,7 +1,7 @@
 # Kth to the Last in Singly Linked List
 Source: [Interview Cake](https://www.interviewcake.com/question/swift/kth-to-last-node-in-singly-linked-list?course=fc1&section=linked-lists)
 
-## You have a linked list ↴ and want to find the kth to last node.
+## You have a linked list and want to find the kth to last node.
 
 Write a function kthToLastNode() that takes an integer k and the headNode of a singly-linked list, and returns the kth to last node in the list.
 
