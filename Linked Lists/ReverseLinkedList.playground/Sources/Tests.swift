@@ -13,6 +13,12 @@ public class Tests: XCTestCase {
         let result = Solution().reverseLinkedList(startingFrom: nodes[0])
         XCTAssertTrue(isListReversed(list: result, originalNodes: nodes))
     }
+    
+    func testAllSameValueLinkedList() {
+        let nodes = linkedListNodes(from: [1, 1, 1, 1])
+        let result = Solution().reverseLinkedList(startingFrom: nodes[0])
+        XCTAssertTrue(isListReversed(list: result, originalNodes: nodes))
+    }
 
     func testOneElementLinkedList() {
         let node = LinkedListNode(1)
