@@ -1,25 +1,24 @@
 
 struct Solution {
     func reverseLinkedList<Value>(startingFrom headOfList: LinkedListNode<Value>?) -> LinkedListNode<Value>? {
-
-        guard var headOfList = headOfList else { return nil }
-        guard let nextInList = headOfList.next else { return headOfList }
         
-        var last: LinkedListNode<Value>? = nil
-        var curr: LinkedListNode<Value>? = headOfList
-        var next: LinkedListNode<Value>? = nextInList
+        // create a variable holding the current head of list
+        var curr = headOfList
+        // create a variable to hold the node before the current variable
+        var past: LinkedListNode<Value>? = nil
         
+        // iterate the list
         while curr != nil {
-            headOfList = curr!
-            headOfList.next = last
-            
-            let temp = next
-            last = curr
+            // hold the value of the next node in the list
+            let next = curr?.next
+            // update the next node of the current node to be the past node
+            curr?.next = past
+            // move the past and current nodes up the list
+            past = curr
             curr = next
-            next = temp?.next
         }
         
-        return headOfList
+        return past
     }
 }
 
