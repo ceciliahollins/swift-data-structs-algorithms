@@ -4,23 +4,24 @@ struct Solution {
     
     func containsCycle<T>(firstNode: LinkedListNode<T>) -> Bool {
         
-        // start both runners at the beginning
-        var slowRunner = firstNode
-        var fastRunner = firstNode
+        // start both pointers at the beginning
+        var slowPointer = firstNode
+        var fastPointer = firstNode
         
-        // until we hit the end of the list
-        while let nextSlowRunner = slowRunner.next,
-              let nextFastRunner = fastRunner.next?.next {
-            slowRunner = nextSlowRunner
-            fastRunner = nextFastRunner
+        // move the pointers to their next node if the node is there
+        while let nextSlowPointer = slowPointer.next,
+              let nextFastPointer = fastPointer.next?.next {
+            // update the pointers
+            slowPointer = nextSlowPointer
+            fastPointer = nextFastPointer
             
-            // case: fastRunner is about to "lap" slowRunner
-            if fastRunner === slowRunner {
+            // if the fast and slow pointers are the same, the fast pointer has lapped the slow pointer and there is a cycle
+            if fastPointer === slowPointer {
                 return true
             }
         }
         
-        // case: fastRunner hit the end of the list
+        // there was no next node for a runner to go, there is no cycle
         return false
     }
 }
