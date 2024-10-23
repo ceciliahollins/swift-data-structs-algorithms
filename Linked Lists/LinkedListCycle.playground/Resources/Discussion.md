@@ -6,11 +6,11 @@ For this solution, create two pointer variables starting at the head of the link
 
 ![Figure 0](figure-0.png)
 
-![Figure 1](figure-0.png)
+![Figure 1](figure-1.png)
 
-![Figure 2](figure-0.png)
+![Figure 2](figure-2.png)
 
-![Figure 3](figure-0.png)
+![Figure 3](figure-3.png)
 
 By the third iteration, the fast pointer has caught up with the slow pointer, and it is known there is a cycle in the list. 
 
