@@ -27,7 +27,7 @@ All problems are taken from the sources below:
 
 [Sorting and Searching](https://github.com/ceciliahollins/swift-data-structs-algorithms/tree/main/Sorting%20and%20Searching)
 
-[Linked Lists](https://github.com/ceciliahollins/swift-data-structs-algorithms/tree/main/Linked%20Lists) *WIP*
+[Linked Lists](https://github.com/ceciliahollins/swift-data-structs-algorithms/tree/main/Linked%20Lists)
 
 [Queues and Stacks](https://github.com/ceciliahollins/swift-data-structs-algorithms/tree/main/Queues%20and%20Stacks) *WIP*
 
