@@ -33,6 +33,28 @@ class Stack<Item> {
 }
 ```
 
-Use your Stack class to **implement a new class MaxStack with a method getMax() that returns the largest element in the stack.** getMax() should not remove the item.
+Use your Stack class to **implement a new class with a method getMax() that returns the largest element in the stack.** getMax() should not remove the item. Push and pop methods should also be implemented to support getMax.
 
 Your stacks will contain only integers.
+
+Your skeleton class is as outlined below:
+
+```swift
+class Solution {
+
+    // implement the push, pop, and getMax methods
+    
+
+    func push(_ item: Int) {
+
+    }
+
+    func pop() -> Int? {
+        return nil
+    }
+
+    func getMax() -> Int? {
+        return nil
+    }
+}
+```
