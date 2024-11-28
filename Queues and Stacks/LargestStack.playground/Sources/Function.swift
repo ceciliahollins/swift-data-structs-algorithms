@@ -2,41 +2,30 @@ import Foundation
 
 class Solution {
     
-    var items: [Int] = []
-    var maxItems: Stack<Int> = Stack()
+    var stack: Stack<(val: Int, max: Int)> = Stack()
     
     func push(_ item: Int) {
-        
-        if let maxItem = maxItems.peek() {
-            if item >= maxItem {
-                maxItems.push(item)
-            }
-        } else {
-            maxItems.push(item)
+        var newMax = item
+        if let currMax = stack.peek()?.max {
+            newMax = max(newMax, currMax)
         }
         
-        items.append(item)
+        stack.push((item, newMax))
     }
     
     func pop() -> Int? {
-        guard !items.isEmpty else { return nil }
-        
-        if items.last == maxItems.peek() {
-            let _ = maxItems.pop()
-        }
-        
-        return items.removeLast()
+        return stack.pop()?.val
     }
     
     func getMax() -> Int? {
-        return maxItems.peek()
+        return stack.peek()?.max
     }
 }
 
 class Stack<Item> {
     
     // initialize an empty array to hold our stack items
-    var items: [Item] = []
+    private var items: [Item] = []
     
     // push a new item onto the stack
     func push(_ item: Item) {
